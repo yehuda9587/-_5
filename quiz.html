@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מבחן שליפה מהירה</title>
+    <link rel="stylesheet" href="styles/style.css"> 
+    <script src="data/studyData.js"></script> 
+    <style>
+        .quiz-container {
+            max-width: 700px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            text-align: right;
+        }
+        .question-box {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #c0392b;
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            background-color: #fceae8;
+        }
+        .answer-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            text-align: right;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        .answer-button:hover {
+            background-color: #3498db;
+        }
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            display: none; /* נסתר עד לקבלת תשובה */
+        }
+        .correct {
+            background-color: #2ecc71;
+            color: white;
+        }
+        .incorrect {
+            background-color: #e74c3c;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>❓ מבחן שליפה מהירה (בסיס לפיתוח)</h1>
+        <a href="index.html" class="back-button">← חזרה לדף הבית</a>
+    </header>
+
+    <div class="quiz-container">
+        <div class="question-box" id="question-text">
+            בחר את הנושא לקבלת שאלות או לחץ "התחל מבחן אקראי".
+        </div>
+
+        <div id="answers-container">
+            <button class="answer-button">א. התחל מבחן</button>
+            <button class="answer-button">ב. לחץ על כפתור זה</button>
+            <button class="answer-button">ג. בעתיד יהיו כאן שאלות!</button>
+        </div>
+
+        <div class="feedback" id="feedback-message"></div>
+    </div>
+
+    <script>
+        // *** הערה: זוהי רק מסגרת לוגיקה. הוספת הלוגיקה המלאה ליצירת שאלות באופן אקראי דורשת פיתוח נוסף ב-JavaScript ***
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // לדוגמה: ניתן לטעון את כל הנושאים מה-STUDY_DATA
+            const topics = STUDY_DATA.map(item => item.topic);
+            console.log("נושאים זמינים למבחן:", topics);
+            
+            // פונקציה שתשלף שאלות רב-ברירה ותטען אותן לדף
+            // function loadNewQuestion() { ... }
+            
+            // נניח: document.getElementById('question-text').innerText = "מהו הטיפול המיידי במקרה של שוק אנפילקטי?";
+        });
+    </script>
+</body>
+</html>
