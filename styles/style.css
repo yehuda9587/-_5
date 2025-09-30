@@ -1,0 +1,202 @@
+/* styles/style.css */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    padding: 20px;
+    text-align: center;
+    direction: rtl; /* יישור לימין לכל האתר */
+}
+
+h1 {
+    color: #c0392b;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+/* --- דף הבית (index.html) --- */
+.main-header {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.study-card {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.study-card h2 {
+    color: #2980b9;
+    font-size: 1.5em;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+.cta-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+.cta-button {
+    background-color: #c0392b;
+    color: white;
+}
+.secondary-button {
+    background-color: #2980b9;
+}
+.tertiary-button {
+    background-color: #27ae60;
+}
+.small-link {
+    display: inline-block;
+    color: #34495e;
+    text-decoration: underline;
+    margin-top: 10px;
+}
+.main-footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    color: #7f8c8d;
+    font-size: 0.85em;
+}
+.back-button {
+    display: inline-block;
+    margin: 10px 0 20px;
+    color: #2980b9;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* --- גלריית קלפים (flashcards.html) --- */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 300px; /* רוחב קלף */
+    height: 400px; /* גובה קלף */
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flip-card-front {
+    background-color: #e74c3c; /* אדום חת"ך */
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.5;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.flip-card-back {
+    background-color: #f8f9fa;
+    color: #343a40;
+    transform: rotateY(180deg);
+    text-align: right;
+    justify-content: flex-start;
+    padding: 15px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+}
+.back-title {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #bdc3c7;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 5px;
+}
+.detail-header {
+    font-weight: bold;
+    color: #2980b9;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 100%;
+    font-size: 1.1em;
+}
+.treatment-header {
+    color: #27ae60;
+}
+.detail-list {
+    list-style-type: none;
+    padding-right: 0;
+    margin: 0;
+    line-height: 1.4;
+    font-size: 0.95em;
+    width: 100%;
+}
+.detail-list li {
+    position: relative;
+    padding-right: 15px;
+    margin-bottom: 3px;
+}
+.detail-list li:before {
+    content: "•";
+    position: absolute;
+    right: 0;
+    color: #2980b9;
+    font-weight: bold;
+}
+.treatment-list li:before {
+    content: "✅";
+    color: #27ae60;
+}
