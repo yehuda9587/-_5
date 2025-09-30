@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>פלאשקארדס חכמים</title>
+    <link rel="stylesheet" href="styles/style.css"> 
+    <script src="data/studyData.js"></script> 
+</head>
+<body>
+    <header>
+        <h1>🗂️ פלאשקארדס: שליפה פעילה (לחץ על הקלף)</h1>
+        <a href="index.html" class="back-button">← חזרה לדף הבית</a>
+    </header>
+
+    <div class="cards-container" id="cards-container">
+        </div>
+
+    <script>
+        // פונקציות ליצירת רשימה ב-HTML
+        function createListHTML(items, isTreatment = false) {
+            let listClass = isTreatment ? 'detail-list treatment-list' : 'detail-list';
+            let html = `<ul class="${listClass}">`;
+            items.forEach(item => {
+                html += `<li>${item}</li>`;
+            });
+            html += `</ul>`;
+            return html;
+        }
+
+        // פונקציה לטעינת הקלפים והצגתם
+        function renderCards() {
+            const container = document.getElementById('cards-container');
+            // משתמשים במערך STUDY_DATA שנטען מ-data/studyData.js
+            const studyPlan = STUDY_DATA; 
+            
+            studyPlan.forEach(item => {
+                // תוכן צד קדמי (השאלה)
+                const frontContent = item.topic;
+
+                // תוכן צד אחורי (התשובה המלאה)
+                let backContent = `<div class="back-title">${item.topic}</div>`;
+                
+                // 1. תסמינים
+                backContent += `<div class="detail-header">תסמינים מרכזיים</div>`;
+                backContent += createListHTML(item.symptoms);
+
+                // 2. מבדילים
+                backContent += `<div class="detail-header">תסמינים מבדילים</div>`;
+                backContent += createListHTML(item.distinguishing);
+                
+                // 3. טיפול
+                backContent += `<div class="detail-header treatment-header">טיפול מלא</div>`;
+                backContent += createListHTML(item.treatment, true);
+
+
+                // בניית מבנה הקלף המלא (כולל אפקט היפוך)
+                const cardHTML = `
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                ${frontContent}
+                                <br><br>
+                                (לחץ להיפוך)
+                            </div>
+                            <div class="flip-card-back">
+                                ${backContent}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += cardHTML;
+            });
+        }
+
+        // טעינת הקלפים כאשר הדף נטען
+        document.addEventListener('DOMContentLoaded', renderCards);
+    </script>
+</body>
+</html>
